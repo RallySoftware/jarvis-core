@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.out</target>
+        <encoder>
+            <pattern>%date{MM/dd HH:mm:ss} %-5level[%thread] %logger{1} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="messages" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/message.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/message.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <maxHistory>2</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%m%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Uncomment the below lines if you want to log all incoming messages from the flowdock stream -->
+    <!--<logger name="jarvis.flowdock.debug" level="DEBUG" additivity="false">-->
+        <!--<appender-ref ref="messages"/>-->
+    <!--</logger>-->
+
+    <logger name="jarvis.plugins" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</configuration>
