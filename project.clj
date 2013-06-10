@@ -1,5 +1,4 @@
 (use '[clojure.java.shell :only [sh]])
-(require '(leiningen deploy))
 
 (defproject com.rallydev/jarvis-core "1.0.0"
   :description "A robot for FlowDock"
