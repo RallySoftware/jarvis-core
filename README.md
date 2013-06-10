@@ -1,6 +1,7 @@
-# Jarvis
+# jarvis-core
 
-A FlowDock robot similar to [Hubot](http://hubot.github.com/).
+Jarvis core is the runtime library used when creating a Jarvis instance. It contains all the necessary components to scan for plugins and initialize threads for interacting with flows. For more information on running an instance of
+Jarvis please see the [readme](http://github.com/RallySoftware/jarvis).
 
 ## Why not just use Hubot?
 
