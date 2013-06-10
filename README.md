@@ -8,7 +8,7 @@ Jarvis please see the [readme](http://github.com/RallySoftware/jarvis).
 ## Leiningen
 https://clojars.org/com.rallydev/jarvis-core
 ```clojure
-[com.rallydev/jarvis-core "0.1.0"]
+[com.rallydev/jarvis-core "1.0.0"]
 ```
 
 ## Maven
