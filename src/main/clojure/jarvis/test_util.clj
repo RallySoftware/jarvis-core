@@ -76,3 +76,15 @@
               "name" "developers",
               "organization" "Rally Software",
               "open" true}})
+
+(defn flow-user-typing-message []
+  {"app" nil,
+   "user" 29988,
+   "attachments" [],
+   "sent" 1370968225230,
+   "tags" [],
+   "content" {"typing" "29988-35899-chat-input"},
+          "event" "activity.user",
+          "id" 283833720,
+          "to" 35899,
+          "uuid" nil})

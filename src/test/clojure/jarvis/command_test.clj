@@ -33,7 +33,9 @@
 
 (deftest get-user-id-from-message
   (is (= :29983
-        (command/get-user-id-from-message (test-util/private-message "~help")))))
+        (command/get-user-id-from-message (test-util/private-message "~help"))))
+  (is (= :29983
+        (command/get-user-id-from-message (test-util/message "~help")))))
 
 (deftest leave-command?
   (is (= true
@@ -47,14 +49,16 @@
   (is (= true
         (command/join-command? (test-util/flow-add-message))))
   (is (= false
-        (command/leave-command? (test-util/message "test"))))
+        (command/join-command? (test-util/message "test"))))
   (is (= false
-        (command/leave-command? (test-util/private-message "foo")))))
+        (command/join-command? (test-util/private-message "foo")))))
 
 (deftest private-message?
   (is (= true
         (command/private-message? (test-util/private-message "private message"))))
   (is (= false
-        (command/leave-command? (test-util/message "test"))))
+        (command/private-message? (test-util/message "test"))))
   (is (= false
-        (command/leave-command? (test-util/flow-add-message)))))
+        (command/private-message? (test-util/flow-add-message))))
+  (is (= false
+        (command/private-message? (test-util/flow-user-typing-message)))))

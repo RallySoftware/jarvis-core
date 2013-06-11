@@ -27,7 +27,9 @@
     (.startsWith content "~~")))
 
 (defn private-message? [message]
-  (contains? message "to"))
+  (and
+    (contains? message "to")
+    (= "message" (get message "event"))))
 
 (defn leave-command? [message]
   (when-let [content (m/content message)]
@@ -35,8 +37,8 @@
       (not (map? content))
       (.equals content "~leave"))))
 
-(defn join-command? [msg]
-  (= "flow-add" (get msg "event")))
+(defn join-command? [message]
+  (= "flow-add" (get message "event")))
 
 (defn parse-command [message-content]
   (let [content-vec (s/split message-content #" ")
@@ -54,9 +56,12 @@
   (get-in message ["user" "id"]))
 
 (defn get-user-ids-from-tags [message]
-  (->> (message "tags")
-    (filter #(.startsWith % ":user:"))
-    (map #(user->id %))))
+  (if (< 0 (count (message "tags")))
+    (->> message
+      (message "tags")
+      (filter #(.startsWith % ":user:"))
+      (map #(user->id %)))
+    (get-user-id-from-message message)))
 
 (defn- user->id [user]
   (re-find #"\d+" user))
