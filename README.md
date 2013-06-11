@@ -39,6 +39,11 @@ See [INTRO](https://github.com/RallySoftware/jarvis-core/blob/master/INTRO.md) f
 * To have jarvis join a private flow - first use the flowdock ui to invite him to the flow. If he does not auto join the flow issue the ~join command with the flow you wish for him to join. This may need to be done over a private message.
 * ~list-flows will print all flows that jarvis is currently listening to.
 
+## Pluggins shipped with jarvis-core
+* ~help - Prints the descriptions of each plugin that has been loaded.
+* ~join - joins the specified flows (if he can).
+* ~list-flows - list all of the flows that jarvis is currently listening to.
+
 ## Dependencies
 ```clojure
 [org.clojure/clojure "1.5.0"]
