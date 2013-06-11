@@ -1,5 +1,3 @@
-(use '[clojure.java.shell :only [sh]])
-
 (defproject com.rallydev/jarvis-core "1.0.0"
   :description "A robot for FlowDock"
   :url "http://github.com/RallySoftware/jarvis-core"
