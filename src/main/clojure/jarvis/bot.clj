@@ -36,12 +36,16 @@
       (command/leave-command? msg) (util/close-flow-connection flow-connection)
       :else (invoke-plugin msg plugins))))
 
+(defn private-message [message plugins]
+  (when-let [plugin (command/command->plugin message plugins)]
+    (command/private-message message plugin)))
+
 (defn user-stream [plugins]
   (listen ["" msg flow-connection]
     (let [enhanced-message (util/enhance-message msg)]
       (cond
         (command/join-command? enhanced-message) (init-flow-thread (get enhanced-message "content") plugins)
-        (command/private-message? enhanced-message) (command/private-message enhanced-message (command/command->plugin enhanced-message plugins))))))
+        (command/private-message? enhanced-message) (private-message enhanced-message plugins)))))
 
 (defn init-flow-thread [flow plugins]
   (.submit @threadpool #(flow-stream (flow/flow->flow-id flow) plugins)))
