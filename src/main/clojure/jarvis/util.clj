@@ -29,6 +29,6 @@
 
 (defn close-flow-connection [flow-connection]
   (log/info (str "Closing flow connection - " (.flow-id flow-connection)))
-  (m/chat (.flow-id flow-connection) "Goodbye cruel flow.")
+  (m/chat (.flow-id flow-connection) "Very well sir, goodbye.")
   (f/block-user (.flow-id flow-connection) (get (user/me) "id"))
   (.close flow-connection))

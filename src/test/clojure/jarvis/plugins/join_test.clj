@@ -3,4 +3,4 @@
   (:require [jarvis.plugins.join :as join]
             [jarvis.test-util :as test-util]))
 
-; test stuff
+; this would all be tests of clj-flow or bot.clj. to be deleted.

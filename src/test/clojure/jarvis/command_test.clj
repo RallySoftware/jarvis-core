@@ -1,7 +1,7 @@
 (ns jarvis.command-test
   (:use clojure.test)
   (:require [jarvis.command :as command]
-    [jarvis.test-util :as test-util]))
+            [jarvis.test-util :as test-util]))
 
 (deftest tell-command?
   (is (= true
@@ -28,14 +28,14 @@
         (command/command->plugin (test-util/message "help") {"help" "foo"}))))
 
 (deftest get-user-ids-from-tags
-  (is (= (list "29988" "1234" "35899"
-           (command/get-user-ids-from-tags (test-util/tagged-message))))))
+  (is (= (list "29988" "1234" "35899")
+           (command/get-user-ids-from-tags (test-util/tagged-message))))
+  (is (= (list "29983")
+        (command/get-user-ids-from-tags (test-util/message "~~help")))))
 
 (deftest get-user-id-from-message
-  (is (= :29983
-        (command/get-user-id-from-message (test-util/private-message "~help"))))
-  (is (= :29983
-        (command/get-user-id-from-message (test-util/message "~help")))))
+  (is (= :29983 (command/get-user-id-from-message (test-util/private-message "~help"))))
+  (is (= :29983 (command/get-user-id-from-message (test-util/message "~help")))))
 
 (deftest leave-command?
   (is (= true
