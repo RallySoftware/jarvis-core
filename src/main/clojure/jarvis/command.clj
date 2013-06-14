@@ -61,7 +61,7 @@
       (message "tags")
       (filter #(.startsWith % ":user:"))
       (map #(user->id %)))
-    (list (name (get-user-id-from-message message)))))
+    (list (str (get-user-id-from-message message)))))
 
 (defn- user->id [user]
   (re-find #"\d+" user))
