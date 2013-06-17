@@ -30,7 +30,7 @@
 (deftest get-user-ids-from-tags
   (is (= (list "29988" "1234" "35899")
            (command/get-user-ids-from-tags (test-util/tagged-message))))
-  (is (= (list "29983")
+  (is (= (list :29983)
         (command/get-user-ids-from-tags (test-util/message "~~help")))))
 
 (deftest get-user-id-from-message
