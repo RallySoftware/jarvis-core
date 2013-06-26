@@ -20,32 +20,26 @@
          ~@body)
        (recur))))
 
-(defn invoke-plugin [raw-message plugins]
+(defn invoke-plugin [flow-connection raw-message plugins]
   (when-let [plugin (command/command->plugin raw-message plugins)]
     (let [message (util/enhance-message raw-message)]
       (try
         (cond
+          (command/leave-command? message) (util/close-flow-connection flow-connection)
           (command/tell-command? message) (command/tell message plugin)
+          (command/join-command? message) (init-flow-thread (get message "content") plugins)
+          (command/private-message? message) (command/private-message message plugin)
           :else (command/reply message plugin))
         (catch Exception e
           (log/error e (plugins/command-name plugin) " threw an exception"))))))
 
 (defn flow-stream [flow plugins]
   (listen [flow msg flow-connection]
-    (cond
-      (command/leave-command? msg) (util/close-flow-connection flow-connection)
-      :else (invoke-plugin msg plugins))))
-
-(defn private-message [message plugins]
-  (when-let [plugin (command/command->plugin message plugins)]
-    (command/private-message message plugin)))
+    (invoke-plugin flow-connection msg plugins)))
 
 (defn user-stream [plugins]
   (listen ["" msg flow-connection]
-    (let [enhanced-message (util/enhance-message msg)]
-      (cond
-        (command/join-command? enhanced-message) (init-flow-thread (get enhanced-message "content") plugins)
-        (command/private-message? enhanced-message) (private-message enhanced-message plugins)))))
+    (invoke-plugin flow-connection msg plugins)))
 
 (defn init-flow-thread [flow plugins]
   (.submit @threadpool #(flow-stream (flow/flow->flow-id flow) plugins)))
