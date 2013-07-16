@@ -17,11 +17,11 @@ Bot.addCommand("hello", "Simple Hello from Groovy", "Adam Esterline")
 ```
 
 ## Message -> String
-When jarvis executes a plugin it only passes in 1 parameter and that is the enchanced message received from the flow. 
+When jarvis executes a plugin it passes in 2 parameters and that is the enchanced message received from the flow and a vector of the message content (double quoted strings will be parsed as 1 item in the vecotr). 
 All plugins must return a string that will be used as the content of the reply message.
 
 ```clojure
-(defn my-awesome-plugin [message]
+(defn my-awesome-plugin [message content-vector]
   "my awesome reply")
 ```
 

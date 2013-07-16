@@ -1,4 +1,4 @@
-(defproject com.rallydev/jarvis-core "1.3.0"
+(defproject com.rallydev/jarvis-core "1.4.0"
   :description "A robot for FlowDock"
   :url "http://github.com/RallySoftware/jarvis-core"
   :license {:name "The MIT License (MIT)"
@@ -8,6 +8,7 @@
                  [org.codehaus.groovy/groovy-all "2.1.0"]
                  [org.clojure/java.classpath "0.2.0"]
                  [org.clojure/tools.logging "0.2.6"]
+                 [org.clojure/tools.reader "0.7.5"]
                  [clj-http "0.7.2"]
                  [fs "1.3.2"]
                  [ch.qos.logback/logback-classic "1.0.9"]]

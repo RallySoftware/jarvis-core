@@ -1,15 +1,18 @@
 (ns jarvis.util
-  (:require [jarvis.plugins :as plugins]
-            [jarvis.flowdock.debug :as debug]
-            [clj-flowdock.api.message :as m]
+  (:require [jarvis.flowdock.debug :as debug]
             [clj-flowdock.api.flow :as f]
+            [clj-flowdock.api.message :as m]
             [clj-flowdock.api.user :as user]
             [clojure.string :as s]
-            [clojure.tools.logging :as log]))
+            [clojure.tools.logging :as log]
+            [clojure.tools.reader.edn :as edn]))
 
 (defn- env-variable [name]
   (-> (System/getenv)
     (get name)))
+
+(defn- build-string [content]
+  (str "[" content "]"))
 
 (defn config-property
   ([name]
@@ -32,3 +35,10 @@
   (m/chat (.flow-id flow-connection) "Very well sir, goodbye.")
   (f/block-user (.flow-id flow-connection) (get (user/me) "id"))
   (.close flow-connection))
+
+(defn message-content->vec [message]
+  (vec (map str (-> message
+            (get "content")
+            (subs 1)
+            build-string
+            (edn/read-string)))))
