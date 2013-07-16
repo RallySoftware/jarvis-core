@@ -7,8 +7,8 @@
         :author "Adam Esterline"
         :plugin true}
   help
-  ([message] (help message @plugins/plugins-atom))
-  ([message plugins]
+  ([message content-vec] (help message content-vec @plugins/plugins-atom))
+  ([message content-vec plugins]
     (let [plugin-meta (map meta plugins)
           sorted-plugin-meta (sort-by :command plugin-meta)
           help-text (map #(str "\t" (:command %) ":\t" (:description %)) sorted-plugin-meta)]

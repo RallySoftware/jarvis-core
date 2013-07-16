@@ -8,6 +8,6 @@
         :command "list-flows"
         :author "Jonathan Chauncey"
         :plugin true}
-  list-flows [message]
+  list-flows [message content-vec]
   (let [flows (flow/list)]
     (s/join ", " (map #(% "name") flows))))

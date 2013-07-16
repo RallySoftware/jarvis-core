@@ -12,7 +12,7 @@
         :command "join"
         :author "Jonathan Chauncey, Matt Farrar"
         :plugin true}
-  join [message]
+  join [message content-vec]
   (join-flows message @plugins/plugins-atom))
 
 (defn- join-flows [message plugins]

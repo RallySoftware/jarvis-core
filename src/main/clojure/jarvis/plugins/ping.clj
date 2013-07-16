@@ -4,5 +4,5 @@
         :command "ping"
         :author "Jonathan Chauncey"
         :plugin true}
-  ping [message]
+  ping [message content-vec]
   "Yes sir?")

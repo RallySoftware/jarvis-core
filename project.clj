@@ -1,4 +1,4 @@
-(defproject com.rallydev/jarvis-core "1.4.0"
+(defproject com.rallydev/jarvis-core "1.4.1"
   :description "A robot for FlowDock"
   :url "http://github.com/RallySoftware/jarvis-core"
   :license {:name "The MIT License (MIT)"
@@ -16,6 +16,7 @@
   :java-source-paths ["src/main/java"]
   :test-paths ["src/test/clojure"]
   :resource-paths ["src/main/resources"]
+  :target-path "target"
   :main jarvis.bot
   :plugins [[lein-clojars "0.9.1"]]
   :jvm-opts ["-Xmx1G" "-DLOG_DIR=./logs"])
