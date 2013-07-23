@@ -8,7 +8,7 @@
 
 (declare join-flows join-flow)
 
-(defn ^{:description "join <flow-display-name> - Join the flow that is specified."
+(defn ^{:description "<flow-display-name> - Join the flow that is specified."
         :command "join"
         :author "Jonathan Chauncey, Matt Farrar"
         :plugin true}

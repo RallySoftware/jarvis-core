@@ -4,7 +4,7 @@
             [clj-flowdock.api.flow :as flow]
             [clojure.string :as s]))
 
-(defn ^{:description "list-flows - Prints all flows that I am listening to."
+(defn ^{:description "Prints all flows that I am listening to."
         :command "list-flows"
         :author "Jonathan Chauncey"
         :plugin true}
