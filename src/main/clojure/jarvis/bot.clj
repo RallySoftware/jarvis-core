@@ -33,7 +33,7 @@
           :else (command/reply message plugin))
         (catch Exception e
           (log/error e (plugins/command-name plugin) "threw an exception")
-          (m/reply message (.getMessage e)))))))
+          (m/reply message (str "That command threw the exception ["(.getClass e)"], message ["(.getMessage e)"]")))))))
 
 (defn flow-stream [flow plugins]
   (listen [flow msg flow-connection]
@@ -62,3 +62,5 @@
 
 (defn -main []
   (jarvis/init))
+
+
