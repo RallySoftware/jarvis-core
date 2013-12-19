@@ -4,6 +4,7 @@
             [jarvis.plugins :as plugins]
             [jarvis.util :as util]
             [clj-flowdock.api.flow :as flow]
+            [clj-flowdock.api.message :as m]
             [clj-flowdock.streaming :as streaming]
             [clojure.tools.logging :as log])
   (:import [java.util.concurrent Executors ExecutorService])
@@ -32,7 +33,7 @@
           :else (command/reply message plugin))
         (catch Exception e
           (log/error e (plugins/command-name plugin) "threw an exception")
-          (.getMessage e))))))
+          (m/reply message (.getMessage e)))))))
 
 (defn flow-stream [flow plugins]
   (listen [flow msg flow-connection]
