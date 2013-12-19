@@ -31,7 +31,8 @@
           (command/private-message? message) (command/private-message message plugin)
           :else (command/reply message plugin))
         (catch Exception e
-          (log/error e (plugins/command-name plugin) " threw an exception"))))))
+          (log/error e (plugins/command-name plugin) "threw an exception")
+          (.getMessage e))))))
 
 (defn flow-stream [flow plugins]
   (listen [flow msg flow-connection]
