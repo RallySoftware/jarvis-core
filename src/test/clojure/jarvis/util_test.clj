@@ -14,3 +14,8 @@
   (is (= ["foo"] (util/message-content->vec {"content" "~foo"})))
   (is (= ["foo" "bar"] (util/message-content->vec {"content" "~foo bar"})))
   (is (= ["foo" "bar" "1"] (util/message-content->vec {"content" "~foo bar 1"}))))
+
+(deftest test-env
+  (is (= false (util/test-env?)))
+  (System/setProperty "ENVIRONMENT" "TEST")
+  (is (= true (util/test-env?))))

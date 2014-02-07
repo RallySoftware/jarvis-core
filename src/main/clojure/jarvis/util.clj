@@ -42,3 +42,6 @@
             (subs 1)
             build-string
             (edn/read-string)))))
+
+(defn test-env? []
+  (= "TEST" (config-property "ENVIRONMENT" false)))

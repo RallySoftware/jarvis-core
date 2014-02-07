@@ -58,7 +58,7 @@
   (log/info "Starting Jarvis...")
   (when-let [plugins (plugins/load-plugins)]
     (log/info "Starting to read from flowdock streams")
-    (init-threads plugins)))
+    (if-not (util/test-env?) (init-threads plugins))))
 
 (defn -main []
   (jarvis/init))
