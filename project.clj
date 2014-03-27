@@ -1,4 +1,4 @@
-(defproject com.rallydev/jarvis-core "1.6.2xs"
+(defproject com.rallydev/jarvis-core "1.6.2"
   :description "A robot for FlowDock"
   :url "http://github.com/RallySoftware/jarvis-core"
   :license {:name "The MIT License (MIT)"
