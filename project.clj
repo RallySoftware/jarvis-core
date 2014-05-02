@@ -4,7 +4,7 @@
   :license {:name "The MIT License (MIT)"
             :url "http://opensource.org/licenses/MIT"}
   :dependencies [[org.clojure/clojure "1.5.0"]
-                 [com.rallydev/clj-flowdock "1.2.2"]
+                 [com.rallydev/clj-flowdock "1.2.4"]
                  [org.codehaus.groovy/groovy-all "2.1.0"]
                  [org.clojure/java.classpath "0.2.0"]
                  [org.clojure/tools.logging "0.2.6"]
