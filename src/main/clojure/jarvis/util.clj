@@ -45,3 +45,4 @@
 
 (defn test-env? []
   (= "TEST" (config-property "ENVIRONMENT" false)))
+

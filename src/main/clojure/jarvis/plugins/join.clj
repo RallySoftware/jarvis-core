@@ -8,8 +8,10 @@
 
 (declare join-flows join-flow)
 
-(defn ^{:description "usage: ~join <i>flow-display-name</i> -> Join the flow that is specified."
+(defn ^{:description "Invite me to the specified flow."
         :command "join"
+        :params "flow-display-name"
+        :usage "~join \"Example Flow\""
         :author "Jonathan Chauncey, Matt Farrar"
         :plugin true}
   join [message content-vec]
