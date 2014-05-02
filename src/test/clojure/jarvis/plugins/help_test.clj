@@ -13,6 +13,7 @@
 ;;   yo-plugin [message]
 ;;   "happy")
 
+
 ;; (deftest help
 ;;   (is (= (str "\n\tAll known plugins - "
 ;;            "\n\n\t~bar foo"
@@ -29,3 +30,10 @@
 ;;            "\n\t~~<command> @<name> will private message the people listed the results of the executed command."
 ;;            "\n\tFor more details see https://github.com/RallySoftware/jarvis-core")
 ;;         (help/help (test-util/message "~help") ["help"] [#'test-plugin #'yo-plugin]))))
+
+
+
+;; (deftest help
+;;   (is (= (str "I have placed the items you are looking for in the team inbox, found to the left of this pane.")
+;;          (help/help (test-util/message "~help") ["help"] [#'test-plugin]))))
+
