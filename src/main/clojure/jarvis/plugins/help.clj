@@ -11,7 +11,7 @@
         :plugin true}
   help
   ([message content-vec] (help message content-vec @plugins/plugins-atom))
-  ([message content-vec plugins]))
+  ([message content-vec plugins]
      (let [plugin-meta (map meta plugins)
            sorted-plugin-meta (sort-by :command plugin-meta)
            help-text (map #(str "<code>~" (:command %) "</code> : " (:description %)) sorted-plugin-meta)
@@ -24,5 +24,4 @@
                                 "<br />For more details see https://github.com/RallySoftware/jarvis-core")
            flow (flow/get (message/flow-id message))]
        (inbox/post (get flow "api_token") {:source "Jarvis" :from_address "donotreply@rallydev.com" :subject "Help" :content formatted-help-text :tags ["jarvis_help" "help_me_jarvis"]})
-       (str "Sir, I have placed the items you are looking for in the team inbox, found to the left of this pane.")
-       )))
+       (str "Sir, I have placed the items you are looking for in the team inbox, found to the left of this pane."))))
